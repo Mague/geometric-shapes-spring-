@@ -49,7 +49,7 @@ public class GeometricController {
 			body.setDiameter(figure.getDiameter());
 			break;
 		case "triangle":
-			figure = geometricFigureFactoryInstance.setBase(body.getBase()).setHeight(body.getBase()).createFigure(Type.TRIANGLE);
+			figure = geometricFigureFactoryInstance.setBase(body.getBase()).setHeight(body.getHeight()).createFigure(Type.TRIANGLE);
 			body.setSurface(figure.getSurface());
 			break;
 		case "square":
@@ -58,10 +58,7 @@ public class GeometricController {
 			break;
 		}
 		figuresRepository.save(body);
-		//figures.add(figure);
 		return figure;
-
-		//return ResponseEntity.ok(HttpStatus.OK);
 	}
 	@PutMapping("/geometric/update/{id}")
 	public ResponseEntity update(@PathVariable("id") long id, @RequestBody GeometricFigureEntity body) {
@@ -79,7 +76,7 @@ public class GeometricController {
 			newData.setWidth(body.getWidth());
 			
 		}else if(type.equals("triangle")) {
-			figure = geometricFigureFactoryInstance.setBase(body.getBase()).setHeight(body.getBase()).createFigure(Type.TRIANGLE);
+			figure = geometricFigureFactoryInstance.setBase(body.getBase()).setHeight(body.getHeight()).createFigure(Type.TRIANGLE);
 			newData.setBase(body.getBase());
 			newData.setHeight(body.getHeight());
 			newData.setSurface(figure.getSurface());
@@ -91,9 +88,6 @@ public class GeometricController {
 		}else {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
-//		return ResponseEntity.ok(HttpStatus.OK);
-		
-		
 	}
 	@GetMapping("/geometric/{id}")
 	public ResponseEntity getById(@PathVariable("id") long id) {
@@ -101,18 +95,13 @@ public class GeometricController {
 		Optional<GeometricFigureEntity> tempFigure = figuresRepository.findById(id);
 		
 		if(tempFigure != null) {
-			System.out.println("consiguio");
 			return ResponseEntity.status(HttpStatus.OK).body(tempFigure);
 		}else {
-			System.out.println("no consiguio");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-		}
-//		return ResponseEntity.ok(HttpStatus.OK);
-		
-		
+		}		
 	}
-	@DeleteMapping("/geometric/delete")
-	public ResponseEntity remove(@RequestParam Long id) {
+	@DeleteMapping("/geometric/delete/{id}")
+	public ResponseEntity remove(@PathVariable Long id) {
 		figuresRepository.deleteById(id);
 		return ResponseEntity.ok(HttpStatus.OK);
 	}
