@@ -14,6 +14,8 @@ public class GeometricFigureEntity {
 	private Double height;
 	private Double base;
 	private Double radius;
+	private Double surface;
+	private Double diameter;	
 	private String type;
 	
 	/**
@@ -21,6 +23,9 @@ public class GeometricFigureEntity {
 	 */
 	public long getId() {
 		return id;
+	}
+	public void setId(long id) {
+		this.id=id;
 	}
 	public String getType() {
 		return type;
@@ -78,5 +83,29 @@ public class GeometricFigureEntity {
 	 */
 	public void setBase(double base) {
 		this.base = base;
+	}
+	/**
+	 * @return the surface
+	 */
+	public Double getSurface() {
+		return surface;
+	}
+	/**
+	 * @param surface the surface to set
+	 */
+	public void setSurface(Double surface) {
+		this.surface = surface;
+	}
+	/**
+	 * @return the diameter
+	 */
+	public Double getDiameter() {
+		return diameter;
+	}
+	/**
+	 * @param diameter the diameter to set
+	 */
+	public void setDiameter(Double diameter) {
+		this.diameter = diameter;
 	}
 }

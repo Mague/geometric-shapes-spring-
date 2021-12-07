@@ -8,7 +8,6 @@ public class Circle implements GeometricFigure  {
 		this.type="Circle";
 		this.radius=radius;
 	}
-	//superficie; base; altura; diámetro
 	@Override
 	public Double getSurface() {
 		return Math.PI*(this.radius*this.radius);
@@ -26,7 +25,7 @@ public class Circle implements GeometricFigure  {
 
 	@Override
 	public Double getDiameter() {
-		return (this.radius*this.radius);
+		return (this.radius*2);
 	}
 
 	@Override

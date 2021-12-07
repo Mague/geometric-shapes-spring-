@@ -1,4 +1,4 @@
-package com.example.demo.repositories;
+package com.example.demo.daos;
 
 import org.springframework.stereotype.Repository;
 
